@@ -429,6 +429,16 @@ export class FlowchartHandler {
           self.load(name).setOptions(name);
         });
       }
+      
+      if (
+        self.isFlagedChange($GF.CONSTANTS.FLOWCHART_CHG_RULES) ||
+        self.isFlagedChange($GF.CONSTANTS.FLOWCHART_CHG_DATAS) ||
+        self.isFlagedChange($GF.CONSTANTS.FLOWCHART_CHG_GRAPHHOVER)
+      ) {
+        this.getFlagNames($GF.CONSTANTS.FLOWCHART_CHG_SOURCES).forEach(name => {
+          self.load(name).setOptions(name);
+        });
+      }
       // console.log('RENDER Flags AFTER SOURCE', clonedeep(this.flags));
 
       // OPTIONS
