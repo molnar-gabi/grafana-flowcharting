@@ -403,9 +403,6 @@ export class FlowchartHandler {
    */
   refreshStates(rules: Rule[], metrics: Metric[]): this {
     const trc = $GF.trace.before(this.constructor.name + '.' + 'refreshStates()');
-    this.flowcharts.forEach(flowchart => {
-      flowchart.redraw();
-    });
     if (this.changeRuleFlag) {
       this.updateStates(rules);
       this.changeRuleFlag = false;
