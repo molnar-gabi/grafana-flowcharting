@@ -415,12 +415,19 @@ export class FlowchartHandler {
     if (!this.mousedown) {
       this.flagChange($GF.CONSTANTS.FLOWCHART_APL_OPTIONS);
       const self = this;
+
       // SOURCE
       if (self.isFlagedChange($GF.CONSTANTS.FLOWCHART_CHG_SOURCES)) {
         this.getFlagNames($GF.CONSTANTS.FLOWCHART_CHG_SOURCES).forEach(name => {
           self.load(name).setOptions(name);
         });
       }
+
+      self.load(self.currentFlowchartName).setOptions(self.currentFlowchartName);
+      const rrules = this.ctrl.rulesHandler.getRules();
+      const mmetrics = this.ctrl.metricHandler.getMetrics();
+      this.updateStates(rrules);
+      self.async_refreshStates(rrules, mmetrics);
       // console.log('RENDER Flags AFTER SOURCE', clonedeep(this.flags));
 
       // OPTIONS
